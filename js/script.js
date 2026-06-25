@@ -302,23 +302,65 @@
     });
   }
 
-  /* ---------- Konami code: MAXIMUM OVERDRIVE ---------- */
-  var SEQ = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
-  var pos = 0;
+  /* ---------- MAXIMUM OVERDRIVE (Konami): keyboard + touch ---------- */
   var banner = document.getElementById("overdriveBanner");
-  window.addEventListener("keydown", function (e) {
-    var k = e.key;
-    var want = SEQ[pos];
-    if (k && k.toLowerCase() === want.toLowerCase()) {
-      pos++;
-      if (pos === SEQ.length) {
-        pos = 0;
-        var on = document.body.classList.toggle("overdrive");
-        if (banner) banner.hidden = !on;
-        if (on && manCount) { manliness += 9000; manCount.textContent = manliness.toLocaleString("en-US"); }
+  function fireOverdrive() {
+    var on = document.body.classList.toggle("overdrive");
+    if (banner) banner.hidden = !on;
+    if (on && manCount) { manliness += 9000; manCount.textContent = manliness.toLocaleString("en-US"); }
+    if (on && !prefersReduced) { spawnParticles(window.innerWidth / 2, window.innerHeight / 2); }
+  }
+
+  // Generic sequence matcher with an inactivity reset.
+  function makeMatcher(seq, onDone) {
+    var pos = 0, timer = null;
+    return function (tok) {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(function () { pos = 0; }, 4000);
+      if (tok === seq[pos]) {
+        pos++;
+        if (pos === seq.length) { pos = 0; onDone(); }
+      } else {
+        pos = (tok === seq[0]) ? 1 : 0;
       }
-    } else {
-      pos = (k === SEQ[0]) ? 1 : 0;
-    }
+    };
+  }
+
+  // Desktop: ↑ ↑ ↓ ↓ ← → ← → B A
+  var KMAP = { ArrowUp: "U", ArrowDown: "D", ArrowLeft: "L", ArrowRight: "R", b: "B", a: "A" };
+  var kmatch = makeMatcher(["U","U","D","D","L","R","L","R","B","A"], fireOverdrive);
+  window.addEventListener("keydown", function (e) {
+    var tok = KMAP[e.key] || (e.key ? KMAP[e.key.toLowerCase()] : null);
+    if (tok) kmatch(tok);
   });
+
+  // Mobile: swipe up, up, down, down, left, right, left, right — then two taps.
+  // Listeners are passive (no preventDefault) so normal scrolling is unaffected.
+  var tmatch = makeMatcher(["U","U","D","D","L","R","L","R","TAP","TAP"], fireOverdrive);
+  var sx = 0, sy = 0;
+  window.addEventListener("touchstart", function (e) {
+    var t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY;
+  }, { passive: true });
+  window.addEventListener("touchend", function (e) {
+    var t = e.changedTouches[0];
+    var dx = t.clientX - sx, dy = t.clientY - sy;
+    var ax = Math.abs(dx), ay = Math.abs(dy);
+    var tok;
+    if (ax < 26 && ay < 26) tok = "TAP";           // barely moved -> a tap (B / A)
+    else if (ay >= ax) tok = dy < 0 ? "U" : "D";   // mostly vertical
+    else tok = dx < 0 ? "L" : "R";                 // mostly horizontal
+    tmatch(tok);
+  }, { passive: true });
+
+  // Easy shareable alt for phones: tap the nav hog 🐗 five times fast.
+  var hogSpot = document.querySelector(".nav__hog");
+  if (hogSpot) {
+    var taps = 0, tapTimer = null;
+    hogSpot.addEventListener("click", function () {
+      taps++;
+      if (tapTimer) clearTimeout(tapTimer);
+      tapTimer = setTimeout(function () { taps = 0; }, 1200);
+      if (taps >= 5) { taps = 0; fireOverdrive(); }
+    });
+  }
 })();
