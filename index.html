@@ -555,6 +555,24 @@
     &#128293; MAXIMUM OVERDRIVE ENGAGED &#128293;
   </div>
 
-  <script src="js/script.js?v=3" defer></script>
+  <script>
+    /* Register a network-first service worker so a normal refresh always
+       loads the latest deploy (no hard-refresh needed after the first install). */
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").then(function (reg) {
+          reg.update();
+          // If a new worker takes over, reload once so the page shows the update.
+          var reloaded = false;
+          navigator.serviceWorker.addEventListener("controllerchange", function () {
+            if (reloaded) return;
+            reloaded = true;
+            window.location.reload();
+          });
+        }).catch(function () {});
+      });
+    }
+  </script>
+  <script src="js/script.js?v=4" defer></script>
 </body>
 </html>
