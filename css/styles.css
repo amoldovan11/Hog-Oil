@@ -130,8 +130,10 @@ section[id] { scroll-margin-top: 76px; } /* keep headings clear of the sticky na
   display: flex; align-items: center; gap: 20px;
   padding: 12px 24px;
 }
-.nav__brand { display: flex; align-items: center; gap: 10px; }
-.nav__hog { font-size: 1.6rem; filter: grayscale(.2); }
+.nav__brand { display: flex; align-items: center; gap: 10px; touch-action: manipulation; cursor: pointer; }
+.nav__hog { font-size: 1.6rem; filter: grayscale(.2); display: inline-block; }
+.nav__hog.bump { animation: hogBump .25s var(--ease); }
+@keyframes hogBump { 0%,100% { transform: scale(1); } 45% { transform: scale(1.55) rotate(-8deg); } }
 .nav__wordmark {
   font-family: var(--font-display);
   font-size: 1.7rem;

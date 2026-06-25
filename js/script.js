@@ -312,16 +312,19 @@
   }
 
   // Generic sequence matcher with an inactivity reset.
-  function makeMatcher(seq, onDone) {
+  // onStep(matched, total) fires whenever progress is made (used for haptics).
+  function makeMatcher(seq, onDone, onStep) {
     var pos = 0, timer = null;
     return function (tok) {
       if (timer) clearTimeout(timer);
-      timer = setTimeout(function () { pos = 0; }, 4000);
+      timer = setTimeout(function () { pos = 0; }, 5000);
       if (tok === seq[pos]) {
         pos++;
+        if (onStep) onStep(pos, seq.length);
         if (pos === seq.length) { pos = 0; onDone(); }
       } else {
         pos = (tok === seq[0]) ? 1 : 0;
+        if (onStep && pos === 1) onStep(1, seq.length);
       }
     };
   }
@@ -334,9 +337,14 @@
     if (tok) kmatch(tok);
   });
 
-  // Mobile: swipe up, up, down, down, left, right, left, right — then two taps.
-  // Listeners are passive (no preventDefault) so normal scrolling is unaffected.
-  var tmatch = makeMatcher(["U","U","D","D","L","R","L","R","TAP","TAP"], fireOverdrive);
+  // Mobile: swipe up, up, down, down, left, right, left, right (no taps — a tap fires
+  // by accident on touch, e.g. when stopping a momentum scroll, and would reset you).
+  // Sub-threshold touches are ignored entirely, so stray taps never break a run.
+  // Listeners are passive, so normal scrolling still works. Each correct swipe buzzes.
+  var SWIPE_MIN = 26;
+  var tmatch = makeMatcher(["U","U","D","D","L","R","L","R"], fireOverdrive, function (n, total) {
+    if (navigator.vibrate) { try { navigator.vibrate(n === total ? [50, 30, 70] : 18); } catch (er) {} }
+  });
   var sx = 0, sy = 0;
   window.addEventListener("touchstart", function (e) {
     var t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY;
@@ -345,21 +353,26 @@
     var t = e.changedTouches[0];
     var dx = t.clientX - sx, dy = t.clientY - sy;
     var ax = Math.abs(dx), ay = Math.abs(dy);
-    var tok;
-    if (ax < 26 && ay < 26) tok = "TAP";           // barely moved -> a tap (B / A)
-    else if (ay >= ax) tok = dy < 0 ? "U" : "D";   // mostly vertical
-    else tok = dx < 0 ? "L" : "R";                 // mostly horizontal
-    tmatch(tok);
+    if (Math.max(ax, ay) < SWIPE_MIN) return;        // ignore taps / tiny moves
+    tmatch(ay >= ax ? (dy < 0 ? "U" : "D") : (dx < 0 ? "L" : "R"));
   }, { passive: true });
 
-  // Easy shareable alt for phones: tap the nav hog 🐗 five times fast.
-  var hogSpot = document.querySelector(".nav__hog");
-  if (hogSpot) {
+  // Easiest path on phones: tap the HOG OIL logo (top-left) 5 times fast.
+  // Bound to the whole brand for a big tap target; each tap buzzes + pulses the hog so
+  // you can see it counting (and confirm this script actually loaded).
+  var brand = document.querySelector(".nav__brand");
+  var hogIco = document.querySelector(".nav__hog");
+  if (brand) {
     var taps = 0, tapTimer = null;
-    hogSpot.addEventListener("click", function () {
+    brand.addEventListener("click", function (e) {
+      e.preventDefault();
       taps++;
       if (tapTimer) clearTimeout(tapTimer);
-      tapTimer = setTimeout(function () { taps = 0; }, 1200);
+      tapTimer = setTimeout(function () { taps = 0; }, 1500);
+      if (navigator.vibrate) { try { navigator.vibrate(15); } catch (er) {} }
+      if (hogIco && !prefersReduced) {
+        hogIco.classList.remove("bump"); void hogIco.offsetWidth; hogIco.classList.add("bump");
+      }
       if (taps >= 5) { taps = 0; fireOverdrive(); }
     });
   }
