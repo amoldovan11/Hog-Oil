@@ -23,8 +23,8 @@
   <!-- ============ TOP WARNING TICKER ============ -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
-      <span>&#9888; WAR-GRADE FORMULA &#9888; SPF 50 &#9888; SWEAT-PROOF SEAL &#9888; HOG-TESTED &#9888; MADE IN THE U.S.A. &#9888; NON-GREASY GREASE &#9888; 80-MIN WATER RESISTANT &#9888; FORGED NOT IMPORTED &#9888;</span>
-      <span>&#9888; WAR-GRADE FORMULA &#9888; SPF 50 &#9888; SWEAT-PROOF SEAL &#9888; HOG-TESTED &#9888; MADE IN THE U.S.A. &#9888; NON-GREASY GREASE &#9888; 80-MIN WATER RESISTANT &#9888; FORGED NOT IMPORTED &#9888;</span>
+      <span>&#9888; WAR-GRADE FORMULA &#9888; BLOCKS 100% OF WEAKNESS &#9888; HOG-TESTED, BEAR-APPROVED &#9888; SMELLS LIKE VICTORY &#9888; CONTAINS REAL THUNDER&dagger; &#9888; BANNED IN 3 NERVOUS COUNTRIES &#9888; MAY CAUSE MUSTACHE &#9888; FORGED NOT IMPORTED &#9888;</span>
+      <span>&#9888; WAR-GRADE FORMULA &#9888; BLOCKS 100% OF WEAKNESS &#9888; HOG-TESTED, BEAR-APPROVED &#9888; SMELLS LIKE VICTORY &#9888; CONTAINS REAL THUNDER&dagger; &#9888; BANNED IN 3 NERVOUS COUNTRIES &#9888; MAY CAUSE MUSTACHE &#9888; FORGED NOT IMPORTED &#9888;</span>
     </div>
   </div>
 
@@ -38,9 +38,10 @@
       <nav class="nav__links" aria-label="Primary">
         <a href="#product">The Can</a>
         <a href="#why">Why Hog Oil</a>
+        <a href="#inside">Formula</a>
         <a href="#specs">Spec Sheet</a>
-        <a href="#deploy">Deployment</a>
         <a href="#field">Field Reports</a>
+        <a href="#faq">Interrogation</a>
       </nav>
       <a href="#buy" class="btn btn--mini">Grease Up &rarr;</a>
       <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
@@ -61,20 +62,26 @@
           <span class="hero__line-3">NEVER&nbsp;BURN.</span>
         </h1>
         <p class="hero__sub">
-          <strong>HOG&nbsp;OIL&trade;</strong> is a war-grade <strong>SPF&nbsp;50</strong> sunscreen built like
-          industrial grease. It goes on like armor, locks in like a handshake, and refuses to quit
-          when you do. Forged for the sun. Built for the beast.
+          <strong>HOG&nbsp;OIL&trade;</strong> is a war-grade <strong>SPF&nbsp;50</strong> sunscreen rendered from
+          pure American grit, distilled thunder, and the unshakeable confidence of a man who has never once
+          read an instruction manual. Goes on like armor. Locks in like a handshake. Repels the sun,
+          light rain, and weak conversation.
         </p>
         <div class="hero__cta">
           <a href="#buy" class="btn btn--primary">Grab a Can &mdash; $24</a>
-          <a href="#why" class="btn btn--ghost">See Why &darr;</a>
+          <button type="button" class="btn btn--chaos" id="greaseUp">GREASE UP &#128293;</button>
         </div>
         <ul class="hero__badges" aria-label="Product highlights">
           <li><b>50</b><span>SPF rating</span></li>
-          <li><b>80</b><span>min water-proof</span></li>
+          <li><b>100%</b><span>freedom</span></li>
           <li><b>0%</b><span>quitting</span></li>
-          <li><b>8oz</b><span>net weight</span></li>
+          <li><b>11/10</b><span>bear-rated</span></li>
         </ul>
+        <p class="hero__manliness">
+          MANLINESS DISPENSED: <span id="manCount">0</span>
+          <button type="button" class="linkbtn" id="wisdomBtn">&#9654; Dispense Hog Wisdom</button>
+        </p>
+        <p class="hero__wisdom" id="wisdom" aria-live="polite"></p>
       </div>
 
       <div class="hero__product">
@@ -332,6 +339,36 @@
     </div>
   </section>
 
+  <!-- ============ WHAT'S IN THE CAN / INGREDIENTS ============ -->
+  <section class="reactor" id="inside">
+    <div class="section-head section-head--light">
+      <p class="section-head__kick">03.5 &mdash; The Formula</p>
+      <h2 class="section-head__title">WHAT'S <em>ACTUALLY</em> IN THE CAN.</h2>
+    </div>
+    <div class="reactor__grid">
+      <div class="ingredient"><div class="ingredient__row"><span>Raw Patriotism</span><b>40%</b></div><div class="ingredient__bar"><i style="width:100%"></i></div></div>
+      <div class="ingredient"><div class="ingredient__row"><span>Pure American Grit</span><b>38%</b></div><div class="ingredient__bar"><i style="width:95%"></i></div></div>
+      <div class="ingredient"><div class="ingredient__row"><span>Concentrated BBQ Smoke</span><b>31%</b></div><div class="ingredient__bar"><i style="width:78%"></i></div></div>
+      <div class="ingredient"><div class="ingredient__row"><span>Distilled Thunder&dagger;</span><b>25%</b></div><div class="ingredient__bar"><i style="width:63%"></i></div></div>
+      <div class="ingredient"><div class="ingredient__row"><span>Bear Adrenaline</span><b>22%</b></div><div class="ingredient__bar"><i style="width:55%"></i></div></div>
+      <div class="ingredient"><div class="ingredient__row"><span>Rendered Eagle Screech</span><b>19%</b></div><div class="ingredient__bar"><i style="width:48%"></i></div></div>
+      <div class="ingredient"><div class="ingredient__row"><span>Liquid Handshake</span><b>17%</b></div><div class="ingredient__bar"><i style="width:43%"></i></div></div>
+      <div class="ingredient ingredient--real"><div class="ingredient__row"><span>Zinc Oxide <em>(the real stuff)</em></span><b>12%</b></div><div class="ingredient__bar"><i style="width:30%"></i></div></div>
+      <div class="ingredient"><div class="ingredient__row"><span>Trace Amounts of Diesel</span><b>9%</b></div><div class="ingredient__bar"><i style="width:23%"></i></div></div>
+    </div>
+    <p class="reactor__foot">Totals add up to 213%. We don't do math &mdash; we do <em>results</em>. <span>&dagger;Thunder sourced ethically from storms that started it.</span></p>
+  </section>
+
+  <!-- ============ BY THE NUMBERS ============ -->
+  <section class="bignums" id="numbers" aria-label="Statistics that are technically unverifiable">
+    <div class="bignums__grid">
+      <div class="bignum"><b data-count="4200000000" data-suffix="+">0</b><span>sunburns obliterated</span></div>
+      <div class="bignum"><b data-count="982341" data-suffix="">0</b><span>mustaches sponsored</span></div>
+      <div class="bignum"><b data-count="100" data-suffix="%">0</b><span>of one bear's approval</span></div>
+      <div class="bignum"><b data-count="3" data-suffix="">0</b><span>nervous nations</span></div>
+    </div>
+  </section>
+
   <!-- ============ DEPLOYMENT / HOW TO ============ -->
   <section class="deploy" id="deploy">
     <div class="section-head section-head--light">
@@ -379,6 +416,61 @@
         <blockquote>"Goes on thick, dries dry. No slick hands, no shine. Finally a sunscreen that means it."</blockquote>
         <figcaption>&mdash; Wyatt H., <span>Rancher, MT</span></figcaption>
       </figure>
+      <figure class="report report--wild">
+        <div class="report__stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Mauled a man for the last can. Zero regrets. Smells like a campfire I respect."</blockquote>
+        <figcaption>&mdash; Gary, <span>Grizzly Bear, Glacier N.P.</span></figcaption>
+      </figure>
+      <figure class="report report--wild">
+        <div class="report__stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Spotted a greased-up man from 14,000 feet. I nodded. He nodded. We understood each other."</blockquote>
+        <figcaption>&mdash; A Bald Eagle, <span>The Sky, U.S.A.</span></figcaption>
+      </figure>
+      <figure class="report report--wild">
+        <div class="report__stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"Only thing that doesn't cook off my hood at full send. I run it on the engine block too."</blockquote>
+        <figcaption>&mdash; BIG CHET, <span>Monster Truck, The Arena</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ SIDE EFFECTS ============ -->
+  <section class="sideeffects" id="warning">
+    <div class="warnbox">
+      <div class="warnbox__head">&#9888; KNOWN SIDE EFFECTS &#9888;</div>
+      <ul class="warnbox__list">
+        <li>Spontaneous mustache growth (some users report two)</li>
+        <li>An uncontrollable urge to fix a fence that isn't broken</li>
+        <li>Handshakes so firm they may become a legal matter</li>
+        <li>Neighbors describing you as "weirdly capable"</li>
+        <li>Mild magnetism toward pickup trucks and brisket</li>
+        <li>Your own reflection nodding back in quiet approval</li>
+      </ul>
+      <p class="warnbox__foot">Discontinue use if you begin speaking exclusively in grunts. Actually&mdash;don't. That's working.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ / INTERROGATION ============ -->
+  <section class="faq" id="faq">
+    <div class="section-head">
+      <p class="section-head__kick">06 &mdash; The Interrogation</p>
+      <h2 class="section-head__title">QUESTIONS WE GET <em>YELLED</em> AT US.</h2>
+    </div>
+    <div class="faq__list">
+      <details class="qa"><summary>Can I eat it?</summary><p>We can't legally recommend it. We also can't legally stop you. Everything is edible exactly once.</p></details>
+      <details class="qa"><summary>Is it tested on animals?</summary><p>A bear tested it on us. We passed. See "Field Reports."</p></details>
+      <details class="qa"><summary>What's the SPF, really?</summary><p>Fifty. But it <em>feels</em> like five thousand, and feelings are valid.</p></details>
+      <details class="qa"><summary>Is it actually waterproof?</summary><p>It survived a dishwasher, a flash flood, and a difficult conversation. Reapply every 80 minutes anyway.</p></details>
+      <details class="qa"><summary>Why a can instead of a bottle?</summary><p>Because a bottle is a coward's vessel. A can has <em>resolve</em>.</p></details>
+      <details class="qa"><summary>Does it work on people who read instructions?</summary><p>Yes. They're simply better at it than the rest of us.</p></details>
+    </div>
+  </section>
+
+  <!-- ============ AWARDS MARQUEE ============ -->
+  <section class="awards" aria-label="Accolades of questionable origin">
+    <div class="awards__track">
+      <span>&#11088; VOTED #1 BY A GUY NAMED CHAD &#9733; MOST AGGRESSIVE CAN, 2026 &#9733; CERTIFIED HOG&trade; &#9733; BANNED IN 3 COUNTRIES (THEY'RE SCARED) &#9733; 11/10 &mdash; A REAL BEAR &#9733; SMELLS-LIKE-VICTORY AWARD &#9733; </span>
+      <span>&#11088; VOTED #1 BY A GUY NAMED CHAD &#9733; MOST AGGRESSIVE CAN, 2026 &#9733; CERTIFIED HOG&trade; &#9733; BANNED IN 3 COUNTRIES (THEY'RE SCARED) &#9733; 11/10 &mdash; A REAL BEAR &#9733; SMELLS-LIKE-VICTORY AWARD &#9733; </span>
     </div>
   </section>
 
@@ -433,21 +525,35 @@
       <nav class="footer__nav" aria-label="Footer">
         <a href="#product">The Can</a>
         <a href="#why">Why Hog Oil</a>
+        <a href="#inside">Formula</a>
         <a href="#specs">Spec Sheet</a>
-        <a href="#deploy">Deployment</a>
         <a href="#field">Field Reports</a>
+        <a href="#faq">Interrogation</a>
         <a href="#buy">Resupply</a>
       </nav>
     </div>
     <div class="footer__fine">
       <p>
-        &copy; 2026 HOG OIL&trade; Heavy-Duty Sun Division. This is a fictional product &amp; satirical
-        marketing site &mdash; not a real sunscreen and not medical advice. For actual sun protection,
-        use an approved broad-spectrum SPF and follow the label.
+        &copy; 2026 HOG OIL&trade; Heavy-Duty Sun Division. This is a 100% fictional product &amp; satirical
+        marketing site &mdash; not a real sunscreen and not medical advice. Distilled thunder not included.
+        No bears, eagles, or monster trucks were harmed (Gary asked us to clarify he was the one doing the
+        mauling). For <em>actual</em> sun protection, use an approved broad-spectrum SPF and follow the label.
       </p>
       <p class="footer__made">Forged in the U.S.A. &middot; Made, not imported.</p>
     </div>
   </footer>
+
+  <!-- ============ TESTOSTERONE HUD ============ -->
+  <aside class="hud" id="hud" aria-label="Testosterone meter (for entertainment only)">
+    <div class="hud__label">TESTOSTERONE</div>
+    <div class="hud__bar"><div class="hud__fill" id="hudFill"></div></div>
+    <div class="hud__val"><span id="hudVal">0</span>%</div>
+  </aside>
+
+  <!-- ============ OVERDRIVE BANNER (konami easter egg) ============ -->
+  <div class="overdrive-banner" id="overdriveBanner" role="status" aria-live="assertive" hidden>
+    &#128293; MAXIMUM OVERDRIVE ENGAGED &#128293;
+  </div>
 
   <script src="js/script.js" defer></script>
 </body>
