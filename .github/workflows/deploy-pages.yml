@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
 # Builds and publishes the static HOG OIL site to GitHub Pages.
-# `enablement: true` turns Pages on automatically the first time this runs,
-# so no manual repo-settings change is needed.
+# Pages must be enabled once under Settings > Pages (Source: "GitHub Actions");
+# after that, every push to the default branch deploys automatically.
 
 on:
   push:
@@ -32,8 +32,6 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
