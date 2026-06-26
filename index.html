@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23211b14'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e1a03e'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a1917'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23afa99d'/%3E%3C/svg%3E" />
 
-  <link rel="stylesheet" href="css/styles.css?v=6" />
+  <link rel="stylesheet" href="css/styles.css?v=7" />
 </head>
 <body>
 
@@ -66,58 +66,37 @@
       </div>
 
       <div class="hero__product">
-        <!-- the tube -->
-        <svg class="tube" id="tube" viewBox="0 0 300 460" role="img" aria-label="A tube of NOON SPF 50 broad-spectrum sunscreen for face and body.">
+        <!-- the bottle (compact, bag-friendly) -->
+        <svg class="bottle" id="bottle" viewBox="0 0 260 360" role="img" aria-label="A compact NOON SPF 50 broad-spectrum sunscreen bottle for face and body, 50 mL.">
           <defs>
-            <linearGradient id="tubeBody" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#d9c4a3"/>
-              <stop offset="0.5" stop-color="#efe2c9"/>
-              <stop offset="1" stop-color="#ccb38d"/>
+            <linearGradient id="bBody" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#e6e3db"/>
+              <stop offset="0.5" stop-color="#fbfaf6"/>
+              <stop offset="1" stop-color="#e0ddd4"/>
             </linearGradient>
-            <linearGradient id="capG" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#1c1710"/>
-              <stop offset="0.5" stop-color="#3a3026"/>
-              <stop offset="1" stop-color="#161009"/>
+            <linearGradient id="bCap" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#88847a"/>
+              <stop offset="0.5" stop-color="#b4b0a5"/>
+              <stop offset="1" stop-color="#7f7b71"/>
             </linearGradient>
-            <linearGradient id="crimp" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#b98f5e"/>
-              <stop offset="0.5" stop-color="#d8bd92"/>
-              <stop offset="1" stop-color="#a87f52"/>
-            </linearGradient>
-            <radialGradient id="sunDisc" cx="0.4" cy="0.35" r="0.7">
-              <stop offset="0" stop-color="#b89a7d"/>
-              <stop offset="1" stop-color="#937357"/>
-            </radialGradient>
           </defs>
 
-          <ellipse cx="150" cy="438" rx="92" ry="16" fill="#000" opacity="0.12"/>
-
-          <!-- crimp seal -->
-          <rect x="78" y="44" width="144" height="20" rx="4" fill="url(#crimp)"/>
-          <g stroke="#9c7548" stroke-width="1.4" opacity="0.5">
-            <line x1="92" y1="48" x2="92" y2="60"/><line x1="108" y1="48" x2="108" y2="60"/>
-            <line x1="124" y1="48" x2="124" y2="60"/><line x1="140" y1="48" x2="140" y2="60"/>
-            <line x1="156" y1="48" x2="156" y2="60"/><line x1="172" y1="48" x2="172" y2="60"/>
-            <line x1="188" y1="48" x2="188" y2="60"/><line x1="204" y1="48" x2="204" y2="60"/>
-          </g>
+          <!-- cap -->
+          <rect x="78" y="24" width="104" height="62" rx="12" fill="url(#bCap)"/>
+          <rect x="78" y="74" width="104" height="2.4" fill="#737066" opacity="0.5"/>
 
           <!-- body -->
-          <path d="M78 70 Q150 56 222 70 L222 372 Q222 388 206 388 L94 388 Q78 388 78 372 Z" fill="url(#tubeBody)"/>
+          <rect x="58" y="84" width="144" height="252" rx="28" fill="url(#bBody)"/>
           <!-- soft highlight -->
-          <rect x="104" y="84" width="14" height="280" rx="7" fill="#fff" opacity="0.28"/>
+          <rect x="74" y="100" width="12" height="218" rx="6" fill="#ffffff" opacity="0.55"/>
 
-          <!-- label content -->
-          <circle cx="150" cy="150" r="17" fill="url(#sunDisc)"/>
-          <text x="150" y="214" text-anchor="middle" class="tube__name">NOON</text>
-          <text x="150" y="240" text-anchor="middle" class="tube__spf">SPF 50</text>
-          <line x1="96" y1="258" x2="204" y2="258" stroke="#b6a489" stroke-width="1.5"/>
-          <text x="150" y="282" text-anchor="middle" class="tube__line">BROAD SPECTRUM</text>
-          <text x="150" y="300" text-anchor="middle" class="tube__line">SUNSCREEN</text>
-          <text x="150" y="356" text-anchor="middle" class="tube__fine">FACE &amp; BODY · 1.7 FL OZ</text>
-
-          <!-- cap -->
-          <rect x="92" y="386" width="116" height="14" rx="3" fill="#2a2218"/>
-          <rect x="96" y="398" width="108" height="56" rx="12" fill="url(#capG)"/>
+          <!-- label -->
+          <circle cx="130" cy="150" r="6.5" fill="#a7a196"/>
+          <text x="130" y="186" text-anchor="middle" class="bottle__name">NOON</text>
+          <line x1="98" y1="200" x2="162" y2="200" stroke="#cbc7bd" stroke-width="1.4"/>
+          <text x="130" y="220" text-anchor="middle" class="bottle__line">BROAD SPECTRUM SPF 50</text>
+          <text x="130" y="236" text-anchor="middle" class="bottle__line">FACE &amp; BODY</text>
+          <text x="130" y="300" text-anchor="middle" class="bottle__fine">50 mL / 1.7 FL OZ</text>
         </svg>
         <div class="hero__rating">
           <span class="stars" aria-hidden="true">★★★★★</span>
@@ -141,13 +120,13 @@
   <!-- product -->
   <section class="product" id="product">
     <div class="product__media">
-      <svg class="tube tube--alt" viewBox="0 0 300 460" role="img" aria-label="NOON SPF 50 tube, front view.">
-        <use href="#tube" />
+      <svg class="bottle" viewBox="0 0 260 360" role="img" aria-label="NOON SPF 50 bottle, front view.">
+        <use href="#bottle" />
       </svg>
     </div>
     <div class="product__copy">
       <p class="eyebrow">The daily SPF</p>
-      <h2>One tube. Face, neck, ears, hands — handled.</h2>
+      <h2>One bottle. Face, neck, ears, hands — handled.</h2>
       <p class="lead">
         Most guys skip sunscreen because it's greasy, it stings, and it turns you into a ghost.
         NOON fixes all three. A weightless hybrid formula that rubs in clear, dries matte in
@@ -158,6 +137,7 @@
         <li>Niacinamide &amp; vitamin E to calm and protect, not just block</li>
         <li>Dries down matte — no shine under a hat, no slick on your phone</li>
         <li>Fragrance-free, so it doesn't fight your cologne or your nose</li>
+        <li>Compact 50&nbsp;mL bottle — slips into a backpack, gym bag or glovebox</li>
       </ul>
       <a href="#shop" class="btn btn--solid">Add to bag</a>
     </div>
@@ -228,14 +208,14 @@
     <div class="lineup__grid">
       <article class="sku">
         <div class="sku__art">
-          <svg viewBox="0 0 160 200" role="img" aria-label="NOON Daily Face SPF 50 tube">
-            <ellipse cx="80" cy="190" rx="44" ry="7" fill="#000" opacity="0.1"/>
-            <rect x="46" y="20" width="68" height="9" rx="2" fill="#c2a578"/>
-            <path d="M46 32 Q80 26 114 32 L114 168 Q114 178 104 178 L56 178 Q46 178 46 168 Z" fill="#e8dac0"/>
-            <circle cx="80" cy="74" r="8" fill="#9c7a5e"/>
-            <text x="80" y="104" text-anchor="middle" class="sku__name">NOON</text>
-            <text x="80" y="120" text-anchor="middle" class="sku__spf">SPF 50</text>
-            <rect x="56" y="178" width="48" height="18" rx="4" fill="#2a2218"/>
+          <svg viewBox="0 0 160 200" role="img" aria-label="NOON Daily Face SPF 50 bottle">
+            <ellipse cx="80" cy="192" rx="40" ry="6" fill="#000" opacity="0.08"/>
+            <rect x="58" y="26" width="44" height="28" rx="7" fill="#9d9890"/>
+            <rect x="46" y="52" width="68" height="128" rx="16" fill="#efece4"/>
+            <rect x="56" y="64" width="6" height="104" rx="3" fill="#ffffff" opacity="0.5"/>
+            <circle cx="80" cy="86" r="4.5" fill="#a7a196"/>
+            <text x="80" y="112" text-anchor="middle" class="sku__name">NOON</text>
+            <text x="80" y="128" text-anchor="middle" class="sku__spf">SPF 50</text>
           </svg>
         </div>
         <h3>Daily Face</h3>
@@ -248,11 +228,11 @@
         <div class="sku__art">
           <svg viewBox="0 0 160 200" role="img" aria-label="NOON Everyday Body SPF 50 pump bottle">
             <ellipse cx="80" cy="190" rx="46" ry="7" fill="#000" opacity="0.1"/>
-            <rect x="72" y="14" width="16" height="20" rx="3" fill="#2a2218"/>
-            <rect x="60" y="30" width="40" height="12" rx="3" fill="#3a3026"/>
-            <rect x="50" y="42" width="60" height="142" rx="16" fill="#a98a6c"/>
+            <rect x="72" y="14" width="16" height="20" rx="3" fill="#2b2a27"/>
+            <rect x="60" y="30" width="40" height="12" rx="3" fill="#3a3833"/>
+            <rect x="50" y="42" width="60" height="142" rx="16" fill="#9a958b"/>
             <rect x="62" y="58" width="9" height="110" rx="4" fill="#fff" opacity="0.22"/>
-            <circle cx="80" cy="92" r="9" fill="#efe4d2"/>
+            <circle cx="80" cy="92" r="9" fill="#eceae3"/>
             <text x="80" y="124" text-anchor="middle" class="sku__name sku__name--light">NOON</text>
             <text x="80" y="140" text-anchor="middle" class="sku__spf sku__spf--light">SPF 50</text>
           </svg>
@@ -266,10 +246,10 @@
         <div class="sku__art">
           <svg viewBox="0 0 160 200" role="img" aria-label="NOON Sun Stick SPF 30">
             <ellipse cx="80" cy="190" rx="38" ry="7" fill="#000" opacity="0.1"/>
-            <rect x="58" y="24" width="44" height="30" rx="8" fill="#2a2218"/>
-            <rect x="56" y="52" width="48" height="132" rx="10" fill="#caa86f"/>
+            <rect x="58" y="24" width="44" height="30" rx="8" fill="#2b2a27"/>
+            <rect x="56" y="52" width="48" height="132" rx="10" fill="#b3aea3"/>
             <rect x="66" y="66" width="8" height="104" rx="4" fill="#fff" opacity="0.22"/>
-            <circle cx="80" cy="96" r="8" fill="#9c7a5e"/>
+            <circle cx="80" cy="96" r="8" fill="#857f74"/>
             <text x="80" y="126" text-anchor="middle" class="sku__name">NOON</text>
             <text x="80" y="142" text-anchor="middle" class="sku__spf">SPF 30</text>
           </svg>
@@ -412,6 +392,6 @@
       });
     }
   </script>
-  <script src="js/script.js?v=6" defer></script>
+  <script src="js/script.js?v=7" defer></script>
 </body>
 </html>
