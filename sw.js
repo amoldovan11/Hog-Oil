@@ -5,7 +5,7 @@
    when the network is unavailable (basic offline support).
    ========================================================= */
 
-const CACHE = "hogoil-cache-v1";
+const CACHE = "noon-cache-v1";
 
 // Activate immediately on install — don't wait for old tabs to close.
 self.addEventListener("install", function () {
